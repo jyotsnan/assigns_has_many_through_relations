@@ -7,7 +7,9 @@ For example, given a pair of models `Location` and `User`, we will consider `Loc
 ## Example UI
 ![assigns_has_many_through_relations_screenshot](https://cloud.githubusercontent.com/assets/89930/6175967/0d86cf9e-b2c9-11e4-85d8-79c58d8570d6.png)
 
-In the above example, clicking on "Assign Selected" will move the selected `User`s to the middle column by creating the `locations_user` join model between them and the selected `Location` "Home".
+In the above example, clicking on "Assign Selected" will move the selected `User`s to the middle column by creating the `locations_user` join model between them and the selected `Location` "Home". 
+
+You'll notice there's a Filter text input, this will filter the corresponding list as you type. Hitting ESC will clear the text field.
 
 ## Installation
 
@@ -75,7 +77,15 @@ Finally, render the management UI partial in a view template in `app/views/locat
 
 You'll have to provide the user with a link to `locations_users_path`. And that's it. Now you'll be able to assign and unassign `User`s to `Location`s.
 
-You'll notice there's a Filter text input, this will filter the corresponding list as you type. Hitting ESC will clear the text field.
+You can configure the engine to run a controller authorization method as you would a controller macro e.g like [Cancan's](https://github.com/CanCanCommunity/cancancan/wiki/Authorizing-Controller-Actions) `load_and_authorize_resource`:
+
+```ruby
+# config/initializers/assigns_has_many_through_relations.rb
+
+AHMTR.configure do
+  auth_filter :load_and_authorize_resource
+end
+```
 
 ## Todo
 
