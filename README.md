@@ -77,6 +77,8 @@ Finally, render the management UI partial in a view template in `app/views/locat
 
 You'll have to provide the user with a link to `locations_users_path`. And that's it. Now you'll be able to assign and unassign `User`s to `Location`s.
 
+Note: currently the left side model has to respond_to `name` for a nice display name, and the right side model has to respond to `full_name`. This will be configurable soon.
+
 You can configure the engine to run a controller authorization method as you would a controller macro e.g like [Cancan's](https://github.com/CanCanCommunity/cancancan/wiki/Authorizing-Controller-Actions) `authorize_resource`:
 
 ```ruby
@@ -90,6 +92,7 @@ end
 ## Todo
 
 1. Write specs.
+2. Configurable model name method.
 
 ## Contributing
 
