@@ -77,13 +77,13 @@ Finally, render the management UI partial in a view template in `app/views/locat
 
 You'll have to provide the user with a link to `locations_users_path`. And that's it. Now you'll be able to assign and unassign `User`s to `Location`s.
 
-You can configure the engine to run a controller authorization method as you would a controller macro e.g like [Cancan's](https://github.com/CanCanCommunity/cancancan/wiki/Authorizing-Controller-Actions) `load_and_authorize_resource`:
+You can configure the engine to run a controller authorization method as you would a controller macro e.g like [Cancan's](https://github.com/CanCanCommunity/cancancan/wiki/Authorizing-Controller-Actions) `authorize_resource`:
 
 ```ruby
 # config/initializers/assigns_has_many_through_relations.rb
 
 AHMTR.configure do
-  auth_filter :load_and_authorize_resource
+  auth_filter :authorize_resource
 end
 ```
 
