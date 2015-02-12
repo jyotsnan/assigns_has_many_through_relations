@@ -56,4 +56,16 @@ $.fn.hideWhenNoScrollBars = function() {
 $(function() {
   $('.quick-filter').quickListFilter({ item: 'li label, li a' });
   $('.hide-when-no-scrollbars').hideWhenNoScrollBars();
+
+  // For the (Un)Assign All buttons. Will check all the options and then submit the form.
+  $('.check-all-boxes').click(function(e) {
+    e.preventDefault();
+
+    var target = this.dataset.target,
+        checkMe = $(target);
+
+    checkMe.attr('checked', true);
+    $(this).parents('form').submit();
+    return false;
+  })
 });
