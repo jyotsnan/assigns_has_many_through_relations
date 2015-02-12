@@ -1,6 +1,8 @@
 require "assigns_has_many_through_relations/version"
 require "assigns_has_many_through_relations/engine"
 require "assigns_has_many_through_relations/configuration"
+require "assigns_has_many_through_relations/controller_concern"
+require "assigns_has_many_through_relations/model_concern"
 
 module AssignsHasManyThroughRelations
   BOOTSTRAP_FLASH_MAP = {
@@ -8,9 +10,6 @@ module AssignsHasManyThroughRelations
     error: 'danger'
   }
   BOOTSTRAP_FLASH_MAP.default = 'info'
-
-  autoload :ControllerConcern, 'assigns_has_many_through_relations/controller_concern'
-  autoload :ModelConcern, 'assigns_has_many_through_relations/model_concern'
 
   class << self
     attr_reader :config
