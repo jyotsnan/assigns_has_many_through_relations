@@ -58,7 +58,7 @@ class LocationsUsersController < ApplicationController
 end
 ```
 
-Finally, render the management UI partial in a view template:
+Finally, render the management UI partial in a view template in `app/views/locations_users/index.html.erb`:
 
 ```html
 <div id="locations_users">
