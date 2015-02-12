@@ -72,8 +72,9 @@ You'll have to provide the user with a link to `locations_users_path`. And that'
 
 ## Todo
 
-1. Write specs.
-2. Clean up css classes and ids in the partial.
+1. Move the quick_list_filter.js file into the engine.
+2. Write specs.
+3. Clean up css classes and ids in the partial.
 
 ## Contributing
 
