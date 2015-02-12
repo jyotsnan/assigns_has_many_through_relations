@@ -70,6 +70,11 @@ Finally, render the management UI partial in a view template in `app/views/locat
 
 You'll have to provide the user with a link to `locations_users_path`. And that's it. Now you'll be able to assign and unassign `User`s to `Location`s.
 
+## Todo
+
+1. Write specs.
+2. Clean up css classes and ids in the partial.
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/assigns_has_many_through_relations/fork )
