@@ -7,6 +7,8 @@ For example, given a pair of models `Location` and `User`, we will consider `Loc
 ## Example UI
 ![assigns_has_many_through_relations_screenshot](https://cloud.githubusercontent.com/assets/89930/6175967/0d86cf9e-b2c9-11e4-85d8-79c58d8570d6.png)
 
+In the above example, clicking on "Assign Selected" will move the selected `User`s to the middle column by creating the `locations_user` join model between them and the selected `Location` "Home".
+
 ## Installation
 
 Add this line to your application's Gemfile:
