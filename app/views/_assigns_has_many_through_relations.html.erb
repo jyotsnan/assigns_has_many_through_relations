@@ -19,7 +19,7 @@
       </div>
 
       <div id="role-nav-panel" class="panel-body">
-        <%= render 'shared/quick_list_filter', target: '#roles-nav' %>
+        <%= render '/quick_list_filter', target: '#roles-nav' %>
 
         <ul id="roles-nav" class="nav nav-stacked fix-height">
           <li role="presentation" class="active">
@@ -53,7 +53,7 @@
             </div>
 
             <div class="panel-body">
-              <%= render 'shared/quick_list_filter', target: '#selected-right-side' %>
+              <%= render '/quick_list_filter', target: '#selected-right-side' %>
 
               <ul id="selected-right-side" class="list-unstyled fix-height">
                 <% @selected_right_side_models.each do |model| %>
@@ -86,7 +86,7 @@
             </div>
 
             <div class="panel-body">
-              <%= render 'shared/quick_list_filter', target: '#available-right-side' %>
+              <%= render '/quick_list_filter', target: '#available-right-side' %>
 
               <ul id="available-right-side" class="list-unstyled fix-height">
                 <% @available_right_side_models.each do |model| %>
