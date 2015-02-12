@@ -4,7 +4,7 @@ Rails Engine that provides a management UI to assign models to each other in the
 
 For example, given a pair of models `Location` and `User`, we will consider `Location` to be the left side relation and `User` to be the right side relation. This UI provides a 3 column Bootstrap view where the left most column displays all `Location`s where the user can select one from the list. The 2 other columns are the Assigned and Unnassigned columns. These display `User`s that either have a join model with the selected `Location` or not, respectively. The user can then select `User`s from the Unnassigned column and the form PUT will create the join models necessary to move the Unnassigned `User`s to the middle Assigned column, effectively associating the selected `User`s from the right most column to the selected `Location`.
 
-## Example UI
+## What You Get
 ![assigns_has_many_through_relations_screenshot](https://cloud.githubusercontent.com/assets/89930/6175967/0d86cf9e-b2c9-11e4-85d8-79c58d8570d6.png)
 
 In the above example, clicking on "Assign Selected" will move the selected `User`s to the middle column by creating the `locations_user` join model between them and the selected `Location` "Home". 
