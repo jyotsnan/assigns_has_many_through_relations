@@ -1,5 +1,6 @@
 require "assigns_has_many_through_relations/version"
 require "assigns_has_many_through_relations/engine"
+require "assigns_has_many_through_relations/configuration"
 
 module AssignsHasManyThroughRelations
   BOOTSTRAP_FLASH_MAP = {
@@ -10,6 +11,16 @@ module AssignsHasManyThroughRelations
 
   autoload :ControllerConcern, 'assigns_has_many_through_relations/controller_concern'
   autoload :ModelConcern, 'assigns_has_many_through_relations/model_concern'
+
+  class << self
+    attr_reader :config
+    delegate :auth_filter, to: :config
+
+    def configure(&block)
+      @config ||= Configuration.new
+      @config.instance_exec &block
+    end
+  end
 
   module_function
 
@@ -26,3 +37,6 @@ module AssignsHasManyThroughRelations
     routes.put "/#{left_name}/#{right_name}/:id", to: "#{name}#update", as: "assign_#{name}"
   end
 end
+
+AHMTR = AssignsHasManyThroughRelations
+AHMTR.configure {} # so that @config is never nil

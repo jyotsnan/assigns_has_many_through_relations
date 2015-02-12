@@ -1,14 +1,17 @@
 <div class="flash-messages row">
   <div class="col-sm-12">
     <% flash.each do |key, message| %>
-      <div class="alert alert-<%= AssignsHasManyThroughRelations::BOOTSTRAP_FLASH_MAP[key] %>" role="alert">
-        <%= message %>
+      <div class="alert alert-<%= AssignsHasManyThroughRelations::BOOTSTRAP_FLASH_MAP[key] %> alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <p><%= message %></p>
       </div>
     <% end %>
   </div>
 </div>
 
-<div id="roles" class="row">
+<div id="ahmtr_wrap" class="row">
   <div class="col-sm-3">
     <div class="panel panel-info">
       <div class="panel-heading">
@@ -44,15 +47,15 @@
     <div class="col-sm-9">
       <div class="row">
         <div class="col-sm-6">
-          <div class="panel panel-primary roles-users-list pull-left">
+          <div class="panel panel-primary pull-left">
             <div class="panel-heading">
               <%= pluralize @selected_right_side_models.size, "#{@selected_left_side_model.name} User" %>
             </div>
 
             <div class="panel-body">
-              <%= render 'shared/quick_list_filter', target: '#selected-users' %>
+              <%= render 'shared/quick_list_filter', target: '#selected-right-side' %>
 
-              <ul id="selected-users" class="list-unstyled fix-height">
+              <ul id="selected-right-side" class="list-unstyled fix-height">
                 <% @selected_right_side_models.each do |model| %>
                   <li>
                     <%= f.fields_for join_name, @selected_left_side_model.get_join_model_for(model) do |ruf| %>
@@ -64,28 +67,28 @@
                 <% end %>
               </ul>
 
-              <div class="text-center hide-when-no-scrollbars" data-target="#selected-users">
+              <div class="text-center hide-when-no-scrollbars" data-target="#selected-right-side">
                 <span class="glyphicon glyphicon-chevron-down disabled"></span>
               </div>
             </div>
 
             <div class="panel-footer">
-              <%= f.submit 'Unassign Selected', class: 'btn btn-warning btn-sm' %>
-              <%= f.submit 'Unassign All', class: 'btn btn-danger btn-sm check-all-boxes', data: { target: '#selected-users :checkbox' } %>
+              <%= f.submit 'Unassign Selected', class: 'btn btn-primary btn-xs' %>
+              <%= f.submit 'Unassign All', class: 'btn btn-primary btn-xs check-all-boxes', data: { target: '#selected-right-side :checkbox', confirm: "Are you sure you want to Unassign all Users from the \"#{@selected_left_side_model.name}\" #{@selected_left_side_model.class}?" } %>
             </div>
           </div>
         </div>
 
         <div class="col-sm-6">
-          <div class="panel panel-danger roles-users-list pull-left">
+          <div class="panel panel-danger pull-left">
             <div class="panel-heading">
               <%= pluralize @available_right_side_models.size, "Non #{@selected_left_side_model.name} User" %>
             </div>
 
             <div class="panel-body">
-              <%= render 'shared/quick_list_filter', target: '#available-users' %>
+              <%= render 'shared/quick_list_filter', target: '#available-right-side' %>
 
-              <ul id="available-users" class="list-unstyled fix-height">
+              <ul id="available-right-side" class="list-unstyled fix-height">
                 <% @available_right_side_models.each do |model| %>
                   <li>
                     <%= f.fields_for join_name, model.send(join_name).build do |ruf| %>
@@ -96,14 +99,14 @@
                 <% end %>
               </ul>
 
-              <div class="text-center hide-when-no-scrollbars" data-target="#available-users">
+              <div class="text-center hide-when-no-scrollbars" data-target="#available-right-side">
                 <span class="glyphicon glyphicon-chevron-down disabled"></span>
               </div>
             </div>
 
             <div class="panel-footer">
-              <%= f.submit 'Assign Selected', class: 'btn btn-success btn-sm' %>
-              <%= f.submit 'Assign All', class: 'btn btn-primary btn-sm check-all-boxes', data: { target: '#available-users :checkbox' } %>
+              <%= f.submit 'Assign Selected', class: 'btn btn-primary btn-xs' %>
+              <%= f.submit 'Assign All', class: 'btn btn-primary btn-xs check-all-boxes', data: { target: '#available-right-side :checkbox', confirm: "Are you sure you want to Assign all Users to the \"#{@selected_left_side_model.name}\" #{@selected_left_side_model.class}?" } %>
             </div>
           </div>
         </div>

@@ -25,6 +25,11 @@ Or install it yourself as:
 
     $ gem install assigns_has_many_through_relations
 
+## Dependencies
+
+1. [Twitter Bootstrap](http://getbootstrap.com) (if you want the UI to be pre-styled).
+2. [jQuery](http://jquery.com/download) (for the list Filter).
+
 ## Usage
 
 Declare the routes:
@@ -70,11 +75,11 @@ Finally, render the management UI partial in a view template in `app/views/locat
 
 You'll have to provide the user with a link to `locations_users_path`. And that's it. Now you'll be able to assign and unassign `User`s to `Location`s.
 
+You'll notice there's a Filter text input, this will filter the corresponding list as you type. Hitting ESC will clear the text field.
+
 ## Todo
 
-1. Move the quick_list_filter.js file into the engine.
-2. Write specs.
-3. Clean up css classes and ids in the partial.
+1. Write specs.
 
 ## Contributing
 

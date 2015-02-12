@@ -9,6 +9,8 @@ module AssignsHasManyThroughRelations
 
       include AssignsHasManyThroughRelations::ControllerInstanceMethods
       helper_method :left_relation_class_name, :join_name
+
+      send AHMTR.auth_filter if AHMTR.auth_filter
     end
 
     def left_relation_param_name; @left_relation_param_name end

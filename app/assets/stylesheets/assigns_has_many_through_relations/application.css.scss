@@ -1,0 +1,38 @@
+#ahmtr_wrap {
+  .nav {
+    font-size: 80%;
+
+    .active {
+      background-color: #ebebeb;
+    }
+  }
+
+  .fix-height {
+    max-height: 60vh;
+    overflow-y: scroll;
+  }
+
+  input[type="text"] {
+    width: 100%;
+  }
+  
+  li {
+    overflow: hidden;
+
+    &:hover {
+      background-color: #ebebeb;
+    }
+
+    label {
+      padding: 5px 7px;
+      cursor: pointer;
+      display: inline-block;
+      width: 95%;
+    }
+
+    input[type="checkbox"] {
+      width: auto;
+      cursor: pointer;
+    }
+  }
+}
