@@ -81,7 +81,7 @@ You'll have to provide the user with a link to `locations_users_path`. And that'
 
 ## Configuration
 
-You can configure the engine in an initializer. The given examples are the defaults except for `auth_filter` that won't run if you don't set it.
+You can configure the engine in an initializer. The given examples are the defaults except for `auth_filter`. That won't run if you don't set it.
 
 ```ruby
 # config/initializers/assigns_has_many_through_relations.rb
@@ -96,7 +96,7 @@ AHMTR.configure do
   #
   # e.g. in the case where you declare assigns_has_many_relationships_with :location, :user
   # then this scope would essentially load:
-  #   Location.users
+  #   Location.all
   left_relation_scope do |left_relation_class, current_user|
     left_relation_class.all
   end
@@ -110,7 +110,7 @@ AHMTR.configure do
     left_side_model.users
   end
 
-  # The scope that loads all the non selected left side model's reight relations.
+  # The scope that loads all the non selected left side model's right relations.
   #
   # e.g. in the case where you declare assigns_has_many_relationships_with :location, :user
   # then this scope would essentially load:
