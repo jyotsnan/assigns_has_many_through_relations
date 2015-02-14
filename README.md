@@ -79,13 +79,45 @@ You'll have to provide the user with a link to `locations_users_path`. And that'
 
 **Note:** _currently the left side model has to respond_to `name` for a nice display name, and the right side model has to respond to `full_name`. This will be configurable soon._
 
-You can configure the engine to run a controller authorization method as you would a controller macro e.g like [Cancan's](https://github.com/CanCanCommunity/cancancan/wiki/Authorizing-Controller-Actions) `authorize_resource`:
+## Configuration
+
+You can configure the engine in an initializer. The given examples are the defaults except for `auth_filter` that won't run if you don't set it.
 
 ```ruby
 # config/initializers/assigns_has_many_through_relations.rb
 
 AHMTR.configure do
+  # A controller authorization method to call as you would a controller macro.
+  #
+  # e.g like Cancan's authorize_resource (https://github.com/CanCanCommunity/cancancan/wiki/Authorizing-Controller-Actions)
   auth_filter :authorize_resource
+
+  # The scope that loads the left side models.
+  #
+  # e.g. in the case where you declare assigns_has_many_relationships_with :location, :user
+  # then this scope would essentially load:
+  #   Location.users
+  left_relation_scope do |left_relation_class, current_user|
+    left_relation_class.all
+  end
+
+  # The scope that loads the selected left side model's right relations.
+  #
+  # e.g. in the case where you declare assigns_has_many_relationships_with :location, :user
+  # then this scope would essentially load:
+  #   @location.users
+  selected_right_relation_scope do |left_side_model, right_relation_class, current_user|
+    left_side_model.users
+  end
+
+  # The scope that loads all the non selected left side model's reight relations.
+  #
+  # e.g. in the case where you declare assigns_has_many_relationships_with :location, :user
+  # then this scope would essentially load:
+  #   User.all - @location.users
+  available_right_relation_scope do |right_relation_class, right_models, current_user|
+    right_relation_class.all - right_models
+  end
 end
 ```
 

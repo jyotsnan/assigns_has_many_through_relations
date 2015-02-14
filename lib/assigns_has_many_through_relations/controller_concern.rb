@@ -22,11 +22,24 @@ module AssignsHasManyThroughRelations
 
   module ControllerInstanceMethods
     def index
-      @left_side_models = self.class.left_relation_class.order :name
+      @left_side_models = AHMTR.left_relation_scope.call(
+        self.class.left_relation_class,
+        current_user
+      )
       @selected_left_side_model = self.class.left_relation_class.find params[:id]
       @left_side_models = @left_side_models - [@selected_left_side_model]
-      @selected_right_side_models = @selected_left_side_model.users
-      @available_right_side_models = User.active - @selected_right_side_models
+      
+      @selected_right_side_models = AHMTR.selected_right_relation_scope.call(
+        @selected_left_side_model,
+        self.class.right_relation_class,
+        current_user
+      )
+
+      @available_right_side_models = AHMTR.available_right_relation_scope.call(
+        self.class.right_relation_class,
+        @selected_right_side_models,
+        current_user 
+      )
     end
 
     def update

@@ -13,7 +13,7 @@ module AssignsHasManyThroughRelations
 
   class << self
     attr_reader :config
-    delegate :auth_filter, to: :config
+    delegate *Configuration::PROPERTIES, to: :config
 
     def configure(&block)
       @config ||= Configuration.new
