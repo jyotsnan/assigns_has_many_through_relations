@@ -73,8 +73,8 @@
             </div>
 
             <div class="panel-footer">
-              <%= f.submit 'Unassign Selected', class: 'btn btn-primary btn-xs' %>
-              <%= f.submit 'Unassign All', class: 'btn btn-primary btn-xs check-all-boxes', data: { target: '#selected-right-side :checkbox', confirm: "Are you sure you want to Unassign all Users from the \"#{@selected_left_side_model.name}\" #{@selected_left_side_model.class}?" } %>
+              <%= f.submit 'Unassign Selected', class: 'btn btn-primary btn-xs', disabled: @selected_right_side_models.empty? %>
+              <%= f.submit 'Unassign All', class: 'btn btn-primary btn-xs check-all-boxes', data: { target: '#selected-right-side :checkbox', confirm_text: "Are you sure you want to Unassign all Users from the \"#{@selected_left_side_model.name}\" #{@selected_left_side_model.class}?" }, disabled: @selected_right_side_models.empty? %>
             </div>
           </div>
         </div>
@@ -105,8 +105,8 @@
             </div>
 
             <div class="panel-footer">
-              <%= f.submit 'Assign Selected', class: 'btn btn-primary btn-xs' %>
-              <%= f.submit 'Assign All', class: 'btn btn-primary btn-xs check-all-boxes', data: { target: '#available-right-side :checkbox', confirm: "Are you sure you want to Assign all Users to the \"#{@selected_left_side_model.name}\" #{@selected_left_side_model.class}?" } %>
+              <%= f.submit 'Assign Selected', class: 'btn btn-primary btn-xs', disabled: @available_right_side_models.empty? %>
+              <%= f.submit 'Assign All', class: 'btn btn-primary btn-xs check-all-boxes', data: { target: '#available-right-side :checkbox', confirm_text: "Are you sure you want to Assign all Users to the \"#{@selected_left_side_model.name}\" #{@selected_left_side_model.class}?" }, disabled: @available_right_side_models.empty? %>
             </div>
           </div>
         </div>

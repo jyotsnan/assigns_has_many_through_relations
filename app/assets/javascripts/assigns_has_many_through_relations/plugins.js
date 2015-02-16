@@ -61,10 +61,12 @@ $(function() {
   $('.check-all-boxes').click(function(e) {
     e.preventDefault();
 
-    var target = this.dataset.target,
-        checkMe = $(target);
+    if (confirm(this.dataset.confirmText)) {
+      var target = this.dataset.target,
+          checkMe = $(target);
 
-    checkMe.attr('checked', true);
-    $(this).parents('form').submit();
+      checkMe.attr('checked', true);
+      $(this).parents('form').submit();
+    }
   })
 });
