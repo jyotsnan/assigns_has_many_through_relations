@@ -66,6 +66,5 @@ $(function() {
 
     checkMe.attr('checked', true);
     $(this).parents('form').submit();
-    return false;
   })
 });
