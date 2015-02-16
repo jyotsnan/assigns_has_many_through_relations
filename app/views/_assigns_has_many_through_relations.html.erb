@@ -55,7 +55,7 @@
             <div class="panel-body">
               <%= render '/quick_list_filter', target: '#selected-right-side' %>
 
-              <ul id="selected-right-side" class="list-unstyled fix-height">
+              <ul id="selected-right-side" class="list-unstyled fix-height right-relation-list">
                 <% @selected_right_side_models.each do |model| %>
                   <li>
                     <%= f.fields_for join_name, @selected_left_side_model.get_join_model_for(model) do |ruf| %>
@@ -88,7 +88,7 @@
             <div class="panel-body">
               <%= render '/quick_list_filter', target: '#available-right-side' %>
 
-              <ul id="available-right-side" class="list-unstyled fix-height">
+              <ul id="available-right-side" class="list-unstyled fix-height right-relation-list">
                 <% @available_right_side_models.each do |model| %>
                   <li>
                     <%= f.fields_for join_name, model.send(join_name).build do |ruf| %>
