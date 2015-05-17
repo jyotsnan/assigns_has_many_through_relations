@@ -45,7 +45,7 @@ module AssignsHasManyThroughRelations
     def update
       left_side_model = self.class.left_relation_class.find params[:id]
 
-      if left_side_model.update_attributes params[self.class.left_relation_param_name]
+      if left_side_model.update_attributes defined?(ActionController::StrongParameters) == nil ? params[self.class.left_relation_param_name] : params[self.class.left_relation_param_name].permit!
         flash[:notice] = "Successfully set #{self.class.left_relation_param_name} assignments"
       else
         flash[:error] = left_side_model.errors.full_messages.to_sentence
