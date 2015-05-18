@@ -79,6 +79,11 @@ You'll have to provide the user with a link to `locations_users_path`. And that'
 
 **Note:** _currently the left side model has to respond_to `name` for a nice display name, and the right side model has to respond to `full_name`. This will be configurable soon._
 
+## JavaScript
+Require assigns_has_many_through_relations in your application.js
+```js
+//= require 'assigns_has_many_through_relations'
+```
 ## Configuration
 
 You can configure the engine in an initializer. The given examples are the defaults except for `auth_filter`. That won't run if you don't set it.
