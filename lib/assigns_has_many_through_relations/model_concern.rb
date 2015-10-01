@@ -19,7 +19,7 @@ module AssignsHasManyThroughRelations
 
   module ModelInstanceMethods
     def get_join_model_for(relation)
-      send(self.class.join_name).where("#{relation.class.name.underscore}_id" => relation.id).first
+      send(self.class.join_name).where("#{relation.class.base_name.name.underscore}_id" => relation.id).first
     end
   end
 end
