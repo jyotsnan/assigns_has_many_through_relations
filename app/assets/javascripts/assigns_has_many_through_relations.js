@@ -1,0 +1,1 @@
+//= require_tree './assigns_has_many_through_relations'

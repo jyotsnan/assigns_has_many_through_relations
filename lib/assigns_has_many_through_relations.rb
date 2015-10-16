@@ -33,7 +33,7 @@ module AssignsHasManyThroughRelations
     right_name = right_relation.to_s.pluralize
 
     routes.get "/#{left_name}/#{right_name}/:id", to: "#{name}#index", as: name
-    routes.put "/#{left_name}/#{right_name}/:id", to: "#{name}#update", as: "assign_#{name}"
+    Rails.version.to_i >= 4 ? (routes.patch "/#{left_name}/#{right_name}/:id", to: "#{name}#update", as: "assign_#{name}") : (routes.put "/#{left_name}/#{right_name}/:id", to: "#{name}#update", as: "assign_#{name}")
   end
 end
 
