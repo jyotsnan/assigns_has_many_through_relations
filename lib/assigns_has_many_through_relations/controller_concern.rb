@@ -22,24 +22,7 @@ module AssignsHasManyThroughRelations
 
   module ControllerInstanceMethods
     def index
-      @left_side_models = AHMTR.left_relation_scope.call(
-        self.class.left_relation_class,
-        current_user
-      )
-      @selected_left_side_model = self.class.left_relation_class.find params[:id]
-      @left_side_models = @left_side_models - [@selected_left_side_model]
-      
-      @selected_right_side_models = AHMTR.selected_right_relation_scope.call(
-        @selected_left_side_model,
-        self.class.right_relation_class,
-        current_user
-      )
-
-      @available_right_side_models = AHMTR.available_right_relation_scope.call(
-        self.class.right_relation_class,
-        @selected_right_side_models,
-        current_user 
-      )
+      helper_load_left_right_models
     end
 
     def update
@@ -52,6 +35,28 @@ module AssignsHasManyThroughRelations
       end
 
       redirect_to :back
+    end
+
+    protected
+    def helper_load_left_right_models
+      @left_side_models = AHMTR.left_relation_scope.call(
+          self.class.left_relation_class,
+          current_user
+      )
+      @selected_left_side_model = self.class.left_relation_class.find params[:id]
+      @left_side_models = @left_side_models - [@selected_left_side_model]
+
+      @selected_right_side_models = AHMTR.selected_right_relation_scope.call(
+          @selected_left_side_model,
+          self.class.right_relation_class,
+          current_user
+      )
+
+      @available_right_side_models = AHMTR.available_right_relation_scope.call(
+          self.class.right_relation_class,
+          @selected_right_side_models,
+          current_user
+      )
     end
 
     private

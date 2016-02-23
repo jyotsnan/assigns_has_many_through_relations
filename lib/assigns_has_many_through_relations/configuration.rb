@@ -54,7 +54,7 @@ module AssignsHasManyThroughRelations
     # then this scope would essentially load:
     #   @location.users
     def default_selected_right_relation_scope(left_side_model, right_relation_class, user)
-      left_model.send right_relation_class.name.demodulize.underscore.pluralize
+      left_side_model.send right_relation_class.name.demodulize.underscore.pluralize
     end
 
     # The default available right relation scope loads all of the right relation model
